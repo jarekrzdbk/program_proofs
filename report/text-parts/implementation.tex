@@ -1,0 +1,140 @@
+The first step is to define all the datatypes and functions in a common module so we can reuse it.
+Translation is just a vector that represents atom translation. Atom consist of atom label, \textit{sym} --- symmetry operation, and translation.
+Vertex contains just atom label and symmetry operation, which what we use to define \textit{equivalence} for atoms. Function \textit{Id} returns vertex from an atom, and \textit{AllNodeIds} returns all the Ids (vertices) from sequence of atoms using set comprehension.
+
+\begin{lstlisting}[caption={Common module},label={lst:common}]
+module Common {
+  datatype Translation = Translation(x: int, y: int, z: int)
+  datatype Atom   = Atom(atomLabel: string, sym: int,
+                         translation: Translation)
+
+  datatype Vertex = Vertex(atomLabel: string, sym: int)
+  datatype Bond = Bond(a: Atom, b: Atom)
+  datatype Edge = Edge(u: Vertex, v: Vertex,
+                       shift: Translation)
+
+  function Id(a: Atom): Vertex { Vertex(a.atomLabel, a.sym) }
+
+  function AllNodeIds(atoms: seq<Atom>): set<Vertex> {
+    set i | 0 <= i < |atoms| :: Id(atoms[i])
+  }
+
+  function Subtract (u: Translation, v: Translation):
+                Translation {
+                    Translation(u.x-v.x, u.y-v.y, u.z-v.z)
+                }
+}
+\end{lstlisting}
+
+Now we can implement the algorithm for constructing \textit{LQG}. We need to simplify input and output, method will accept sequences of atoms and bonds, and will return sets of vertices and edges which will represent \textit{LQG}.
+
+\begin{lstlisting}[caption={ConstructLQG specification},label={lst:constructsepcification}, literate={{forall}{forall}6 {exists}{exists}6}]
+method ConstructLQG(atoms: seq<Atom>, bonds: seq<Bond>)
+returns (V: set<Vertex>, E: set<Edge>)
+  requires |atoms| > 0
+  requires forall b :: b in bonds ==> b.a in atoms &&
+                                    b.b in atoms
+  ensures forall e1,e2 | e1 in E && e2 in E && e1 != e2 ::
+  !(e1.u == e2.v && e1.v == e2.u &&
+    e1.shift == Negate(e2.shift))
+  ensures forall i | 0 <= i < |atoms| :: Id(atoms[i]) in V
+  ensures V == AllNodeIds(atoms)
+\end{lstlisting}
+
+Our only preconditions are that there are atoms, and that they are connected. In postconditions we make sure that all atoms are represented in the vertices, and that no distinct edges are inverses of each other, and that vertices contain all \textit{equivalent} classes from atoms.
+
+We assume that molecule connected and since we already have all the bonds we get all the node ids from atoms, and assign visited. Than iterate over all atoms, add invariant to verify that no opposite edges added.
+
+\begin{lstlisting}[caption={Outer loop},label={lst:invariant1}, literate={{forall}{forall}6 {exists}{exists}6}]
+var allNodeIds := AllNodeIds(atoms);
+var visited : set<Vertex> := allNodeIds;
+var edges : set<Edge> := {};
+
+var atomIdx := 0;
+while atomIdx < |atoms|
+  decreases |atoms| - atomIdx
+  invariant forall e1,e2 | e1 in edges && e2 in edges &&
+                                          e1 != e2 ::
+    !(e1.u == e2.v && e1.v == e2.u &&
+        e1.shift == Negate(e2.shift))
+{
+\end{lstlisting}
+
+Iterate over all the bonds make sure to not add opposite edge.
+\begin{lstlisting}[caption={Inner loop},label={lst:invariant2}, literate={{forall}{forall}6 {exists}{exists}6}]
+var currentAtom := atoms[atomIdx];
+atomIdx := atomIdx + 1;
+var currentNodeId := Id(currentAtom);
+
+var bondIdx := 0;
+while bondIdx < |bonds|
+  decreases |bonds| - bondIdx
+  invariant forall e1,e2 | e1 in edges && e2 in edges &&
+                                          e1 != e2 ::
+  !(e1.u == e2.v && e1.v == e2.u &&
+        e1.shift == Negate(e2.shift))
+{
+\end{lstlisting}
+
+Only process bonds that have current atom, if bond contains current atom calculate edge label, and if this edge has not been added yet, add it to the set.
+\begin{lstlisting}[caption={Inner loop, body},label={lst:invariant2}]
+var bond := bonds[bondIdx];
+bondIdx := bondIdx + 1;
+
+if bond.a == currentAtom {
+  var neighborNodeId := Id(bond.b);
+  var shift := Subtract(bond.b.translation,
+                        bond.a.translation);
+  var edge := Edge(currentNodeId, neighborNodeId, shift);
+  var invEdge := Edge(neighborNodeId,
+                      currentNodeId,
+                      Negate(shift));
+
+  if edge !in edges && invEdge !in edges {
+    edges := edges + {edge};
+  }
+} else if bond.b == currentAtom {
+\end{lstlisting}
+
+Text\_Construct module were created in order to test construction of the \textit{LQG}. There we construct molecule that we seen in~\ref{sec:description}, we add minimal number of atoms and bonds needed to construct \textit{LQG}. After constructing \textit{LQG} auxiliary lemma called to prove number of vertices and that they are in the set.
+
+\begin{lstlisting}[caption={Test construction of \textit{LQG} from molecule},label={lst:molecule}]
+var B0 := Atom("B",1, Translation(0,0,0));
+var N00 := Atom("N",2, Translation(0,0,0));
+var N10 := Atom("N",2, Translation(1,0,0));
+var N11 := Atom("N",2, Translation(1,1,0));
+
+var atoms := [B0, N00, N10, N11];
+var bonds := [Bond(B0,N00), Bond(B0,N10), Bond(B0,N11)];
+
+var V, E := ConstructLQG(atoms, bonds);
+...
+
+TestCaseNodeIdProperties(atoms);
+assert |V| == 2;
+assert Vertex("B", 1) in V;
+assert Vertex("N", 2) in V;
+\end{lstlisting}
+
+Since it is in the Main method, when compiled this code will print results.
+
+\begin{verbatim}
+Results:
+|V| = 2 unique vertices
+|E| = 3 edges
+Test 0 vertex Common.Vertex.Vertex("B", 1)
+Test 1 vertex Common.Vertex.Vertex("N", 2)
+Vertex count: 2
+Test 0 edge Common.Edge.Edge(Common.Vertex.Vertex("B", 1),
+                             Common.Vertex.Vertex("N", 2),
+                             Common.Translation.Translation(0, 0, 0))
+Test 1 edge Common.Edge.Edge(Common.Vertex.Vertex("B", 1),
+                             Common.Vertex.Vertex("N", 2),
+                             Common.Translation.Translation(1, 0, 0))
+Test 2 edge Common.Edge.Edge(Common.Vertex.Vertex("B", 1),
+                             Common.Vertex.Vertex("N", 2),
+                             Common.Translation.Translation(1, 1, 0))
+Edges count: 3
+\end{verbatim}
+
+Dafny version \textit{4.10.1} was used for executions. Program were split into modules, and executed using \textit{make}. Default target will run \textit{verify} command with option \texttt{--log-format text} and results of the execution will be stored in the \texttt{results/verification/verify.log}. Target \textit{build} will run \textit{build} command, build log will be stored in the \texttt{results/build/build.log}, directory \texttt{results/build/} will store executables.

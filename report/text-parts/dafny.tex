@@ -1,0 +1,144 @@
+\subsection{Introduction to Dafny}
+Dafny is an imperative language with functional and object oriented features\cite{Leino2010}, and also automated verifier\cite{Herbert2012} based on \textit{dynamic frames}\cite{Kassios2006}.
+Dafny verifier will transform source code to the \textit{Boogie}\cite{Barnett2006} language, than from \textit{Boogie} first-order verification conditions are generated and passed to \textit{Z3} SMT solver\cite{deMoura2008} as a query. There is also an option to specify custom SMT solver \texttt{--solver-path} but it is not well documented and there is no support beside \textit{Z3} solver.
+\begin{figure}[h]
+  \centering
+  \resizebox{0.82\textwidth}{!}{
+  \begin{tikzpicture}[
+      >=stealth,
+      node distance = 2.5cm and 2.8cm,
+      block/.style = {
+        draw,
+        fill=gray!30,
+        minimum width=3cm,
+        minimum height=1.1cm,
+        align=center
+      }
+    ]
+
+    \node[block]                       (compiler) {Dafny Compiler};
+    \node[block, right=of compiler, yshift=1.4cm] (netcomp) {.NET Compiler};
+    \node[block, below=of netcomp]     (verifier) {Dafny Verifier};
+    \node[block, below left=of verifier]   (boogie)  {Boogie};
+    \node[block, below right=of verifier]  (solver)  {SMT Solver (Z3)};
+
+    \draw[<-] (compiler.west)  -- ++(-2.2cm,0) node[midway,above]{Dafny Code};
+
+    \draw[->] (compiler) -- (netcomp) node[midway,above,sloped]{C\# Code};
+    \draw[->] (netcomp.east) -- ++(2.6cm,0) node[midway,above]{.NET Executable};
+
+    \draw[->] (compiler) -- (verifier);
+
+    \draw[->] (verifier.east) -- ++(2.6cm,0) node[midway,above]{Error Messages};
+
+    \draw[->] (verifier) -- (boogie);
+    \draw[->] (boogie)   -- (solver);
+    \draw[->] (solver)   -- (verifier);
+
+  \end{tikzpicture}
+}
+  \caption{The Dafny system, figure taken from \cite{Herbert2012}.}
+  \label{fig:dafny-system}
+\end{figure}
+
+Dafny binaries can be downloaded from the GitHub repository or build from the source code\footnote{Dafny source code: \url{https://github.com/dafny-lang/dafny}}, also can be installed as part of the VS code extension. Dafny \texttt{verify} command takes input Dafny source code with extension \texttt{dfy}, and will output results of the verification. It also supports multiple options like increasing time out for verification or providing more logs about proofs. Separate command can be used to compile Dafny to a number of languages (C#, Java, Go, JavaScript, C++, Python). There is an also introduction of the Intermediate Representation (IR) which is intermediate language which will allow to compile Dafny to many other languages, and plans to create compiler that will allow to run Dafny code natively\footnote{I heard this news in Dafny video: \url{https://youtu.be/OdTiTiuUMto?si=EuyKXzHr36UTAHCF}}.
+It is also possible to translate to \textit{Boogie} code using \texttt{-print} command and run it with the \textit{Boogie}. Even the simplest Dafny program in \textit{Boogie} will contain several thousand lines, because Dafny includes all the specifications needed for the language itself.
+
+\begin{lstlisting}[language=DafnyJS,caption={Dafny Triple method},label={lst:triple}]
+method Triple(x: int) returns (r: int) {
+    var y := 2 * x;
+    r := x + y;
+    assert r == 3 * x;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=DafnyJS,caption={Boogie Triple method, part of the code translated from Dafny to Boogie},label={lst:boogietriple}]
+...
+implementation {:smt_option "smt.arith.solver", "2"}
+               {:verboseName "Triple (correctness)"}
+               Impl$$_module.__default.Triple(x#0: int)
+               returns (r#0: int, $_reverifyPost: bool)
+{
+  var $_ModifiesFrame: [ref,Field]bool;
+  var y#0: int;
+
+    // AddMethodImpl: Triple, Impl$$_module.__default.Triple
+    $_ModifiesFrame := (lambda $o: ref, $f: Field :: 
+      $o != null && $Unbox(read($Heap, $o, alloc)): 
+      bool ==> false);
+    $_reverifyPost := false;
+    // ----- assignment statement ----- Triple.dfy(2,11)
+    assume true;
+    assume true;
+    y#0 := Mul(LitInt(2), x#0);
+    // ----- assignment statement ----- Triple.dfy(3,7)
+    assume true;
+    assume true;
+    r#0 := x#0 + y#0;
+    // ----- assert statement ----- Triple.dfy(4,4)
+    assume true;
+    assert {:id "id2"} r#0 == Mul(LitInt(3), x#0);
+}
+...
+\end{lstlisting}
+
+\subsection{How proof works}
+Dafny program stored in a text file with extension \texttt{dfy}. We can separate program in the modules with \texttt{module} keyword, and import it in another module. There are multiple built in types: \texttt{bool}, \texttt{int}, \texttt{nat}, etc. In addition to regular operators boolean type supports equivalence (if and only if) \texttt{<===>} and implication \texttt{===>} operators. Dafny numerical types do not have upper bound, since it is supposed to represent mathematical numbers (practically it will of course will be limited by the computer hardware). There are collection types: sets, sequences, maps etc. Dafny supports \textit{quantifiers}, universal \texttt{forall}
+\verb|forall x :: P(x)|
+which is the same as $\forall{x}: P(x)$, for all x P holds, and existential quantifier \texttt{exists}
+\verb|exists x :: P(x)|
+which is the same as $\exists{x}: P(x)$, there exists x for whom P holds.
+
+Maps and sets support comprehensions, which can be used to create new maps and sets. Similar to mathematical notation $\{f(x) | R(x)\}$, comprehension
+\verb|set x | R :: f(x)| will define the set of all elements $f(x)$ such that $R$ holds. For example we can define a set of squares of integers from 0 to 9 with:
+\begin{lstlisting}[language=DafnyJS,caption={Set comprehension},label={lst:comprehension}]
+set x | 0 <= x < 10 :: x * x
+\end{lstlisting}
+
+In Dafny \textbf{methods} can take variable number of in parameters and return variable number of out parameters. Methods can be used in statements. Functions can be used in expressions, can take variable number of in parameters but return only one type. We can create \textit{proof obligations} using \textbf{assert} statement, or by specifying \textit{preconditions} using \textbf{requires} keyword and \textit{postconditions} using \textbf{ensures} keyword. Dafny tries to prove \textit{proof obligations} automatically.
+We can define \textbf{datatypes} to represent data structures, they do not change state, and can be defined recursively.
+
+To verify that program is correct we need to confirm all the specifications that we used to annotate the program are correct, essentially we make sure that programs adheres to the contract that we specified. By default Dafny will try to verify \textit{proof obligations} automatically, but if it can't it we need to provide additional steps to confirm that \textit{proof obligation} holds. There are multiple ways to prove in Dafny\footnote{Different ways to prove: \url{https://leino.science/papers/krml276.html}}: \textit{lemma}, \textit{assert/assert by}, \textit{calc}. \textit{Assert} statement verifies that a logical preposition is true. Results of the \textit{assert} can be used to prove other \textit{proof obligations}. It is possible to add additional proof steps to \textit{assert} with \textit{by}. \textit{Calc} statements uses \textit{program-oriented calculations} (poC) \cite{Leino2014} and allows us to use list of related expressions, to provide intermediate steps for a proof.
+
+\begin{lstlisting}[language=DafnyJS,caption={Calc statement, taken from\cite{Leino2023} },label={lst:calc}]
+calc {
+5 * (x + 3);
+== // distribute multiplication over addition
+5 * x + 5 * 3;
+== // use the arithmetic fact that 5 * 3 == 15
+5 * x + 15;
+}
+\end{lstlisting}
+
+We can reuse program proofs by combining them into \textit{lemmas}, and treat them as an auxiliary theorems that we can use in the proofs, it supports preconditions and postconditions and is a \textit{ghost} method. All the mentioned \textit{proof} tools like \textit{assert} and \textit{calc} are \textit{ghost} constructs, this means that they are not present when we compile Dafny program into an executable program. We can define \textit{ghost} variables or methods ourselves using \texttt{ghost} keyword.
+
+Dafny supports \textit{for} and \textit{while} loops. \textit{While} loop specification consist of \textit{quard} and \textit{invariant}. \textit{Guard} specifies until what state loop should continue, \textit{invariant} restricts states where loop can operate. \textit{Guard} checked before each iteration, \textit{invariant} is checked before loop starts, and after each execution of the loop. By the end of the execution loop will reach state where the \textit{Guard} is false and \textit{invariant} still holds. To prove termination, loops support \textit{decreases} statement.
+
+\begin{lstlisting}[language=DafnyJS,caption={While loop },label={lst:loop}]
+method m(){
+  var i := 10;
+  while 0 < i
+    invariant 0 <= i
+    decreases i
+  {
+    i := i - 1;
+  }
+}
+\end{lstlisting}
+
+Here we will check if \textit{invariant} holds, and our \textit{guard} is true, and loop will be executed until $i$ reaches $0$, at this state, \textit{guard} is false but invariant still holds. If we change our invariant to:
+
+\begin{lstlisting}[language=DafnyJS,caption={Incorrect invariant},label={lst:loop}]
+invariant 2 <= i
+\end{lstlisting}
+
+We will get an error:
+
+\begin{lstlisting}[language=DafnyJS,caption={Error on loop invariant},label={lst:looperror}]
+ Related message: loop invariant violation
+  |
+4 |     invariant 2 <= i
+  |
+\end{lstlisting}
+
+This is because we cannot guaranty that loop \textit{invariant} holds, since i will be $0$ by the end of the loop execution.

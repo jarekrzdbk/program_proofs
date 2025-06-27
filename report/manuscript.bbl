@@ -1,0 +1,150 @@
+\begin{thebibliography}{10}
+
+\bibitem{Barnett2006}
+Mike Barnett, Bor-Yuh~Evan Chang, Robert DeLine, Bart Jacobs, and K.~Rustan~M.
+  Leino.
+\newblock {\em Boogie: A Modular Reusable Verifier for Object-Oriented
+  Programs}, page 364–387.
+\newblock Springer Berlin Heidelberg, 2006.
+
+\bibitem{Batten2012}
+Stuart~R. Batten, Neil~R. Champness, Xiao-Ming Chen, Javier Garcia-Martinez,
+  Susumu Kitagawa, Lars Öhrström, Michael O{\textquotesingle}Keeffe,
+  Myunghyun~Paik Suh, and Jan Reedijk.
+\newblock Coordination polymers, metal{\textendash}organic frameworks and the
+  need for terminology guidelines.
+\newblock {\em {CrystEngComm}}, 14(9):3001, 2012.
+
+\bibitem{Batten2013}
+Stuart~R. Batten, Neil~R. Champness, Xiao-Ming Chen, Javier Garcia-Martinez,
+  Susumu Kitagawa, Lars Öhrström, Michael O{\textquotesingle}Keeffe,
+  Myunghyun~Paik Suh, and Jan Reedijk.
+\newblock Terminology of metal{\textendash}organic frameworks and coordination
+  polymers ({IUPAC} recommendations 2013).
+\newblock {\em Pure and Applied Chemistry}, 85(8):1715--1724, jul 2013.
+
+\bibitem{Batten1998}
+Stuart~R. Batten and Richard Robson.
+\newblock Interpenetrating nets: Ordered, periodic entanglement.
+\newblock {\em Angewandte Chemie International Edition}, 37(11):1460–1494,
+  June 1998.
+
+\bibitem{Boyer1992}
+Robert~S. Boyer and Yuan Yu.
+\newblock {\em Automated correctness proofs of machine code programs for a
+  commercial microprocessor}, page 416–430.
+\newblock Springer Berlin Heidelberg, 1992.
+
+\bibitem{buxton1970software}
+J.N. Buxton, B.~Randell, and NATO~Science Committee.
+\newblock {\em Software Engineering Techniques: Report on a Conference
+  Sponsored by t\ he NATO Science Committee, Rome, Italy, 27th to 31st October
+  1969}.
+\newblock NATO Science Committee, 1970.
+
+\bibitem{Chung1984}
+S.~J. Chung, Th. Hahn, and W.~E. Klee.
+\newblock Nomenclature and generation of three-periodic nets: the vector
+  method.
+\newblock {\em Acta Crystallographica Section A Foundations of
+  Crystallography}, 40(1):42--50, jan 1984.
+
+\bibitem{Davis1957}
+M.~Davis.
+\newblock A computer program for {P}resburger's algorithm.
+\newblock In {\em Proving Theorems (as Done by Man, Logician, or Machine)},
+  1957.
+\newblock Proc.\ Summer Institute for Symbolic Logic. Second edition;
+  publication date is 1960.
+
+\bibitem{Davis2002}
+Martin Davis.
+\newblock The early history of automated deduction.
+\newblock {\em Handbook of Automated Reasoning}, 1, 03 2002.
+
+\bibitem{deMoura2008}
+Leonardo de~Moura and Nikolaj Bjørner.
+\newblock {\em Z3: An Efficient SMT Solver}, page 337–340.
+\newblock Springer Berlin Heidelberg, 2008.
+
+\bibitem{Dijkstra1970}
+E.W. Dijkstra.
+\newblock {\em Ewd 249 Notes on Structured Programming: 2nd Ed}.
+\newblock Technische Hogeschool Eindhoven. Department of Mathematics, 1970.
+
+\bibitem{Floyd1967}
+I~Floyd.
+\newblock Rw, assigning meanings to programs.
+\newblock {\em MathematiCal Aspects of Computer Science, ed. Schwartz, JT,
+  Amer. Math. Soc}, 1967.
+
+\bibitem{Grazulis2011}
+Saulius Gražulis, Adriana Daškevič, Andrius Merkys, Daniel Chateigner, Luca
+  Lutterotti, Miguel Quirós, Nadezhda~R. Serebryanaya, Peter Moeck, Robert~T.
+  Downs, and Armel Le~Bail.
+\newblock Crystallography open database (cod): an open-access collection of
+  crystal structures and platform for world-wide collaboration.
+\newblock {\em Nucleic Acids Research}, 40(D1):D420--D427, November 2011.
+
+\bibitem{Grazulis2015}
+Saulius Gražulis, Andrius Merkys, Antanas Vaitkus, and Mykolas
+  Okulič-Kazarinas.
+\newblock Computing stoichiometric molecular composition from crystal
+  structures.
+\newblock {\em Journal of Applied Crystallography}, 48(1):85--91, 2015.
+
+\bibitem{Herbert2012}
+Luke Herbert, K.~Rustan~M. Leino, and Jose Quaresma.
+\newblock {\em Using Dafny, an Automatic Program Verifier}, pages 156--181.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2012.
+
+\bibitem{Hoare1969}
+C.~A.~R. Hoare.
+\newblock An axiomatic basis for computer programming.
+\newblock {\em Commun. ACM}, 12(10):576–580, October 1969.
+
+\bibitem{Kassios2006}
+Ioannis~T. Kassios.
+\newblock {\em Dynamic Frames: Support for Framing, Dependencies and Sharing
+  Without Restrictions}, page 268–283.
+\newblock Springer Berlin Heidelberg, 2006.
+
+\bibitem{Leino2010}
+K.~Rustan~M. Leino.
+\newblock {\em Dafny: An Automatic Program Verifier for Functional
+  Correctness}, page 348–370.
+\newblock Springer Berlin Heidelberg, 2010.
+
+\bibitem{Leino2023}
+K~Rustan~M Leino and Kaleb Leino.
+\newblock {\em Program proofs}.
+\newblock MIT Press, London, England, March 2023.
+
+\bibitem{Leino2014}
+K.~Rustan~M. Leino and Nadia Polikarpova.
+\newblock Verified calculations.
+\newblock In Ernie Cohen and Andrey Rybalchenko, editors, {\em Verified
+  Software: Theories, Tools, Experiments}, pages 170--190, Berlin, Heidelberg,
+  2014. Springer Berlin Heidelberg.
+
+\bibitem{Mol2025}
+Liesbeth~De Mol, Yuri~V. Matiyasevich, Eugenio~G. Omodeo, Alberto Policriti,
+  Wilfried Sieg, and Elaine~J. Weyuker.
+\newblock Martin davis: An overview of his work in logic, computer science, and
+  philosophy, 2025.
+
+\bibitem{Presburger1929}
+Mojzesz Presburger.
+\newblock Uber die vollstandigkeiteines gewissen systems der arithmetik ganzer
+  zahlen, in welchen die addition als einzige operation hervortritt.
+\newblock In {\em Comptes-rendus du ler congres des mathematiciens des pays
+  slavs}, 1929.
+
+\bibitem{cod-tools}
+Yaroslav Rozdobudko, Antanas Vaitkus, Andrius Merkys, and Saulius
+  Gra{\v{z}}ulis.
+\newblock {cod-tools}, version 3.11.0, 2025.
+\newblock \url{svn://www.crystallography.net/cod-tools/tags/v3.11.0}\, Last
+  accessed: \mbox{2025-05-08}.
+
+\end{thebibliography}

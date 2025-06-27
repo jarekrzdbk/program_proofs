@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=teal,
+  urlcolor=magenta,
+  pdfusetitle
+]{hyperref}
+
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{arrows, shapes, backgrounds, positioning, calc, arrows.meta}
+
+
+\usepackage{listings}
+
+\lstdefinelanguage{Dafny}{
+  morekeywords = {
+    class, datatype, type, iterator,
+    bool, nat, int, set, seq,
+    function, predicate,
+    ghost, var,
+    method,
+    returns, module, import, in,
+    requires, ensures, reads, decreases,
+    match, case, false, true, null,
+    assert, assume, print, new, if, then, else, while,
+    invariant, label, return, calc, forall, exists
+  },
+  sensitive        = true,
+  morecomment      = [l]{//},
+  morestring       = [b]",
+  literate =
+    {:=}{{$:=$}}2 {<=}{{$\le$}}1 {>=}{{$\ge$}}1
+    {==>}{{$\Rightarrow$}}2 {<==>}{{$\Leftrightarrow$}}2
+    {forall}{{$\forall$}}1 {exists}{{$\exists$}}1 {!=}{{$\neq$}}1,
+}
+\lstset{
+  language        = Dafny,
+  basicstyle      = \ttfamily\small,
+  keywordstyle    = \color{RoyalBlue}\bfseries,
+  commentstyle    = \color{OliveGreen}\itshape,
+  stringstyle     = \color{Maroon},
+  numbers         = left,
+  numberstyle     = \tiny\color{gray},
+  frame           = single,
+  showstringspaces= false
+}
+
+\input{commands}
+\input{plan}
+
+\title{Verification of the Quotient Graph construction from the molecule}
+
+\author{
+  Yaroslav Rozdobudko
+}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\input{introduction.tex}
+
+\section{Dafny}
+\input{dafny.tex}
+
+\section{Problem}
+\label{sec:description}
+\input{problem.tex}
+
+\section{Implementation}
+\input{implementation.tex}
+
+\section{Conclusions}
+\input{conclusions.tex}
+
+\bibliographystyle{plain}
+\bibliography{./bibliography/citations}
+
+\end{document}

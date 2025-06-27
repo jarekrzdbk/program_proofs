@@ -1,0 +1,18 @@
+To make sure that our software works correctly we need to verify it. Usually it is done by testing, but it is not the best solution and in some cases, like critical software it is not sufficient. Quotes by Edsger W. Dijkstra show why\footnote{Quotes by Dijkstra: \url{https://en.wikiquote.org/wiki/Edsger\_W.\_Dijkstra}}:
+
+\begin{quote}
+\textit{``Testing shows the presence, not the absence, of bugs.''} --- Edsger W. Dijkstra \cite{buxton1970software}
+\end{quote}
+
+\begin{quote}
+\textit{``Program testing can be used to show the presence of bugs, but never to show their absence!''} --- Edsger W. Dijkstra \cite{Dijkstra1970}
+\end{quote}
+
+It is impossible to came up with all possible test cases, so there might be some inputs that will break the program. But this limitation can be solved by formalizing programs, and introducing proof that program does what it is intended.
+Formal verification rigorously proves correctness of program.
+
+
+The earliest usage of formal methods was by Martin Davis\cite{Davis1957, Davis2002, Mol2025} in his proof of the program for Presburger's algorithm\cite{Presburger1929}.
+In 1969 Hoare developed \textit{Hoare triples}\cite{Hoare1969} using Floyd logic\cite{Floyd1967}. \textit{Hoare triple} is of a form $\{P\} C \{Q\}$ where P is the precondition that is required for the program, C is the command after execution of which third part of the triple will be satisfied\footnote{Explained by Hoare: \url{https://www.youtube.com/watch?v=czzp8gMESSY}}. The same paper also provided rules and axioms for work with \textit{Hoare logic}.
+
+Over the years multiple solutions were developed that tried to formalize algorithm. The Boyer-Moore Theorem Prover \textit{Nqthm}\cite{Boyer1992} and \textit{ACL2} proof assistants, automated proof assistant \textit{Isabelle}, languages \textit{Agda}, \textit{Ada/SPARK}, \textit{Dafny}\cite{Leino2010}, \textit{Lean}\footnote{History of program verification: \url{https://www.youtube.com/watch?v=HJkukhoQFzo}}. Formal methods have been used in critical software, hardware design, and also by mathematicians, to help with formal proofs\footnote{The Future of Mathematics \url{https://youtu.be/Dp-mQ3HxgDE?si=hFXAZQEgIvmNDjFb}}.

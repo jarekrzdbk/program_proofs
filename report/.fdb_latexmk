@@ -1,0 +1,13 @@
+# Fdb version 4
+["pdflatex"] 1750776652 "/usr/share/texlive/texmf-dist/tex/latex/tools/.tex" ".pdf" "" 1750776652 2
+  ".aux" 1750776652 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "/etc/texmf/web2c/texmf.cnf" 1739401152 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/tools/.tex" 1654720880 1386 460f979020f33d0d7e4a76360c803835 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1681034085 39561 34c98e380bf7c7201ee6a7909aff625a ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1681034085 39561 34c98e380bf7c7201ee6a7909aff625a ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1750681146 6475499 ec3c597b3cf48195a42f8a329c6a2931 ""
+  (generated)
+  ".aux"
+  ".log"
+  ".pdf"
+  (rewritten before read)

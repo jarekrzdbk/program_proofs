@@ -1,0 +1,29 @@
+
+figures/%.eps.gz: molscript/outputs/%.tif
+	tifftopnm $< | pnmtops -noturn | gzip -vc > $@
+	zcat $@ | grep '%%BoundingBox' > $(dir $@)$*.eps.bb
+
+molscript/outputs/%.tif: molscript/%.com
+	${MAKE} -C $(dir $<)
+
+figures/%.eps: drawings/%.fig
+	fig2dev -L eps $< $@
+
+figures/%.pstex_t: drawings/%.fig
+	fig2dev -L pstex_t $< $@
+	fig2dev -L pstex $<
+
+figures/%.eps.gz: drawings/%.png
+	pngtopnm $< | pnmtops -noturn | gzip -vc > $@
+	zcat $@ | grep '%%BoundingBox' > $(dir $@)$*.eps.bb
+
+%.eps.gz: %.png
+	pngtopnm $< | pnmtops -noturn | gzip -vc > $@
+	zcat $@ | grep '%%BoundingBox' > $*.eps.bb
+
+%.eps.gz: %.jpg
+	jpegtopnm $< | pnmtops -noturn | gzip -vc > $@
+	zcat $@ | grep '%%BoundingBox' > $*.eps.bb
+
+R-figures/outputs/%.eps: R-figures/%.com
+	${MAKE} -C $(dir $<)

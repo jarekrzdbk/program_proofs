@@ -1,0 +1,14 @@
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.GeneratedMSBuildEditorConfig.editorconfig
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.AssemblyInfoInputs.cache
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.AssemblyInfo.cs
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.csproj.CoreCompileInputs.cache
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/Test_Construct
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.dll
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/refint/Test_Construct.dll
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.pdb
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/Test_Construct.deps.json
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/Test_Construct.genruntimeconfig.cache
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/Test_Construct.runtimeconfig.json
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/Test_Construct.dll
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/obj/Debug/net8.0/ref/Test_Construct.dll
+/home/jaro/projects/Yaroslav_Rozdobudko/PhD/courses/program_proofs/results/build/Test_Construct.pdb

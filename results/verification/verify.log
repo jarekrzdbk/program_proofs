@@ -1,0 +1,258 @@
+
+Results for Test_Reconstruct.Main (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.1555010
+  Overall resource count: 429635
+  Maximum assertion batch time: 00:00:00.1555010
+  Maximum assertion batch resource count: 429635
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.1555010
+    Resource count: 429635
+
+    Assertions:
+      Test_Reconstruct.dfy(18,44): the precondition always holds
+      Test_Reconstruct.dfy(20,5): assertion always holds
+      Test_Reconstruct.dfy(24,5): assertion always holds
+      Test_Reconstruct.dfy(28,5): assertion always holds
+      Test_Reconstruct.dfy(29,5): assertion always holds
+      Test_Reconstruct.dfy(30,5): assertion always holds
+      Test_Reconstruct.dfy(31,5): assertion always holds
+      Test_Reconstruct.dfy(32,5): assertion always holds
+
+Results for Test_Construct.TestCaseNodeIdProperties (well-formedness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0304498
+  Overall resource count: 30087
+  Maximum assertion batch time: 00:00:00.0304498
+  Maximum assertion batch resource count: 30087
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0304498
+    Resource count: 30087
+
+    Assertions:
+      Test_Construct.dfy(8,19): index in range
+      Test_Construct.dfy(9,19): index in range
+      Test_Construct.dfy(10,19): index in range
+      Test_Construct.dfy(11,19): index in range
+
+Results for Test_Construct.TestCaseNodeIdProperties (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0445867
+  Overall resource count: 54895
+  Maximum assertion batch time: 00:00:00.0445867
+  Maximum assertion batch resource count: 54895
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0445867
+    Resource count: 54895
+
+    Assertions:
+      Test_Construct.dfy(12,31): this postcondition holds
+      Test_Construct.dfy(13,33): this postcondition holds
+      Test_Construct.dfy(16,22): index in range
+      Test_Construct.dfy(16,7): assertion always holds
+      Test_Construct.dfy(17,22): index in range
+      Test_Construct.dfy(17,7): assertion always holds
+      Test_Construct.dfy(18,22): index in range
+      Test_Construct.dfy(18,7): assertion always holds
+      Test_Construct.dfy(19,22): index in range
+      Test_Construct.dfy(19,7): assertion always holds
+      Test_Construct.dfy(15,5): assertion always holds
+
+Results for Test_Construct.count_vertices (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0230346
+  Overall resource count: 13416
+  Maximum assertion batch time: 00:00:00.0230346
+  Maximum assertion batch resource count: 13416
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0230346
+    Resource count: 13416
+
+    Assertions:
+      Test_Construct.dfy(28,17): this loop invariant holds on entry
+      Test_Construct.dfy(30,15): a value exists that satisfies this let-such-that expression
+      Test_Construct.dfy(31,43): variable 'x', which is subject to definite-assignment rules, is always initialized here
+      Test_Construct.dfy(32,19): variable 'x', which is subject to definite-assignment rules, is always initialized here
+      Test_Construct.dfy(26,5): loop or recursion terminates
+      Test_Construct.dfy(28,17): this loop invariant is maintained by the loop
+      Test_Construct.dfy(35,5): out-parameter 'z', which is subject to definite-assignment rules, is always initialized at this return point
+
+Results for Test_Construct.count_edges (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0203242
+  Overall resource count: 13416
+  Maximum assertion batch time: 00:00:00.0203242
+  Maximum assertion batch resource count: 13416
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0203242
+    Resource count: 13416
+
+    Assertions:
+      Test_Construct.dfy(43,17): this loop invariant holds on entry
+      Test_Construct.dfy(45,15): a value exists that satisfies this let-such-that expression
+      Test_Construct.dfy(46,41): variable 'x', which is subject to definite-assignment rules, is always initialized here
+      Test_Construct.dfy(47,19): variable 'x', which is subject to definite-assignment rules, is always initialized here
+      Test_Construct.dfy(41,5): loop or recursion terminates
+      Test_Construct.dfy(43,17): this loop invariant is maintained by the loop
+      Test_Construct.dfy(50,5): out-parameter 'z', which is subject to definite-assignment rules, is always initialized at this return point
+
+Results for Test_Construct.Main (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0516194
+  Overall resource count: 90791
+  Maximum assertion batch time: 00:00:00.0516194
+  Maximum assertion batch resource count: 90791
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0516194
+    Resource count: 90791
+
+    Assertions:
+      Test_Construct.dfy(63,29): the precondition always holds
+      Test_Construct.dfy(63,29): the precondition always holds
+      Test_Construct.dfy(69,29): the precondition always holds
+      Test_Construct.dfy(69,29): the precondition always holds
+      Test_Construct.dfy(69,29): the precondition always holds
+      Test_Construct.dfy(69,29): the precondition always holds
+      Test_Construct.dfy(69,29): the precondition always holds
+      Test_Construct.dfy(70,5): assertion always holds
+      Test_Construct.dfy(71,5): assertion always holds
+      Test_Construct.dfy(72,5): assertion always holds
+
+Results for QuotientGraph.ConstructLQG (well-formedness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0373164
+  Overall resource count: 35570
+  Maximum assertion batch time: 00:00:00.0373164
+  Maximum assertion batch resource count: 35570
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0373164
+    Resource count: 35570
+
+    Assertions:
+      QuotientGraph.dfy(10,52): index in range
+
+Results for QuotientGraph.ConstructLQG (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0906403
+  Overall resource count: 219254
+  Maximum assertion batch time: 00:00:00.0906403
+  Maximum assertion batch resource count: 219254
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0906403
+    Resource count: 219254
+
+    Assertions:
+      QuotientGraph.dfy(20,17): this loop invariant holds on entry
+      QuotientGraph.dfy(23,31): index in range
+      QuotientGraph.dfy(30,19): this loop invariant holds on entry
+      QuotientGraph.dfy(33,26): index in range
+      QuotientGraph.dfy(29,27): decreases expression is bounded below by 0
+      QuotientGraph.dfy(28,7): loop or recursion terminates
+      QuotientGraph.dfy(30,19): this loop invariant is maintained by the loop
+      QuotientGraph.dfy(19,25): decreases expression is bounded below by 0
+      QuotientGraph.dfy(18,5): loop or recursion terminates
+      QuotientGraph.dfy(20,17): this loop invariant is maintained by the loop
+      QuotientGraph.dfy(60,3): out-parameter 'V', which is subject to definite-assignment rules, is always initialized at this return point
+      QuotientGraph.dfy(60,3): out-parameter 'E', which is subject to definite-assignment rules, is always initialized at this return point
+      QuotientGraph.dfy(8,13): this postcondition holds
+      QuotientGraph.dfy(10,13): this postcondition holds
+      QuotientGraph.dfy(11,15): this postcondition holds
+
+Results for QuotientGraph.ReconstructMolecule (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0331813
+  Overall resource count: 40312
+  Maximum assertion batch time: 00:00:00.0331813
+  Maximum assertion batch resource count: 40312
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0331813
+    Resource count: 40312
+
+    Assertions:
+      QuotientGraph.dfy(84,5): assertion always holds
+      QuotientGraph.dfy(85,3): out-parameter 'atoms', which is subject to definite-assignment rules, is always initialized at this return point
+      QuotientGraph.dfy(85,3): out-parameter 'bonds', which is subject to definite-assignment rules, is always initialized at this return point
+      QuotientGraph.dfy(74,19): this postcondition holds
+      QuotientGraph.dfy(75,47): this postcondition holds
+      QuotientGraph.dfy(76,21): this postcondition holds
+
+Results for Common.AllNodeIds (well-formedness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0328619
+  Overall resource count: 17737
+  Maximum assertion batch time: 00:00:00.0328619
+  Maximum assertion batch resource count: 17737
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0328619
+    Resource count: 17737
+
+    Assertions:
+      Common.dfy(14,41): index in range
+
+Results for Common.IdentityVector (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0184566
+  Overall resource count: 8505
+  Maximum assertion batch time: 00:00:00.0184566
+  Maximum assertion batch resource count: 8505
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0184566
+    Resource count: 8505
+
+    Assertions:
+      Common.dfy(22,13): this postcondition holds
+
+Results for Common.InverseVector (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0192629
+  Overall resource count: 13849
+  Maximum assertion batch time: 00:00:00.0192629
+  Maximum assertion batch resource count: 13849
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0192629
+    Resource count: 13849
+
+    Assertions:
+      Common.dfy(26,31): this postcondition holds
+      Common.dfy(26,74): this postcondition holds
+
+Results for Common.AssociativeVector (correctness)
+  Overall outcome: Correct
+  Overall time: 00:00:00.0163105
+  Overall resource count: 12294
+  Maximum assertion batch time: 00:00:00.0163105
+  Maximum assertion batch resource count: 12294
+
+  Assertion batch 1:
+    Outcome: Valid
+    Duration: 00:00:00.0163105
+    Resource count: 12294
+
+    Assertions:
+      Common.dfy(30,31): this postcondition holds
+
+Dafny program verifier finished with 13 verified, 0 errors

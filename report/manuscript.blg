@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: manuscript.aux
+The style file: plain.bst
+Database file #1: ./bibliography/citations.bib
+Warning--entry type for "cod-tools" isn't style-file defined
+--line 282 of file ./bibliography/citations.bib
+Warning--can't use both author and editor fields in Herbert2012
+You've used 23 entries,
+            2118 wiz_defined-function locations,
+            667 strings with 8917 characters,
+and the built_in function-call counts, 8712 in all, are:
+= -- 839
+> -- 439
+< -- 7
++ -- 176
+- -- 150
+* -- 561
+:= -- 1380
+add.period$ -- 70
+call.type$ -- 23
+change.case$ -- 134
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 380
+empty$ -- 646
+format.name$ -- 150
+if$ -- 1881
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 30
+newline$ -- 118
+num.names$ -- 48
+pop$ -- 190
+preamble$ -- 1
+purify$ -- 120
+quote$ -- 0
+skip$ -- 312
+stack$ -- 0
+substring$ -- 444
+swap$ -- 139
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 74
+warning$ -- 1
+while$ -- 69
+width$ -- 25
+write$ -- 251
+(There were 2 warnings)
