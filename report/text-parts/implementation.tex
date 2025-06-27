@@ -77,7 +77,7 @@ while bondIdx < |bonds|
 \end{lstlisting}
 
 Only process bonds that have current atom, if bond contains current atom calculate edge label, and if this edge has not been added yet, add it to the set.
-\begin{lstlisting}[caption={Inner loop, body},label={lst:invariant2}]
+\begin{lstlisting}[caption={Inner loop, body},label={lst:loopbody}]
 var bond := bonds[bondIdx];
 bondIdx := bondIdx + 1;
 
