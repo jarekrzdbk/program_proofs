@@ -23,24 +23,25 @@ build:  $(EXE_CONSTRUCT) $(EXE_RECONSTR)
 clean: clean-verification clean-build
 
 clean-verification:
-	@rm $(VER_LOG)
+	rm -f $(VER_LOG)
 
 $(VER_LOG): $(SRC_FILES) | $(VER_DIR)
-	@$(DAFNY) verify $(FLAGS_VERIFY) $(SRC_FILES) 2>&1 | tee $@
+	$(DAFNY) verify $(FLAGS_VERIFY) $(SRC_FILES) 2>&1 | tee $@
 
 $(VER_DIR):
-	@mkdir -p $@
+	mkdir -p $@
 
 COMMON_SOURCES = src/Common.dfy src/QuotientGraph.dfy
 
 $(EXE_CONSTRUCT): src/Test_Construct.dfy $(COMMON_SOURCES) | $(BLD_DIR)
-	@$(DAFNY) build $(FLAGS_BUILD) $^ -o $@ 2>&1 | tee $(BLD_LOG)
+	$(DAFNY) build $(FLAGS_BUILD) $^ -o $@ 2>&1 | tee $(BLD_LOG)
 
 $(EXE_RECONSTR): src/Test_Reconstruct.dfy $(COMMON_SOURCES) | $(BLD_DIR)
-	@$(DAFNY) build $(FLAGS_BUILD) $^ -o $@ 2>&1 | tee -a $(BLD_LOG)
+	$(DAFNY) build $(FLAGS_BUILD) $^ -o $@ 2>&1 | tee -a $(BLD_LOG)
 
 $(BLD_DIR):
-	@mkdir -p $@
+	mkdir -p $@
 
 clean-build:
-	@rm -rf $(BLD_DIR)/*
+	rm -f $(BLD_DIR)/*.cs $(BLD_DIR)/*.dll $(BLD_DIR)/*.pdb $(BLD_DIR)/*.json $(BLD_DIR)/*.csproj $(EXE_CONSTRUCT) $(EXE_RECONSTR) $(BLD_LOG)
+	rm -rf $(BLD_DIR)/obj
